@@ -1,4 +1,5 @@
 import { ScrollView, Text, View, Image, ActivityIndicator, FlatList } from "react-native";
+import React from "react";
 import { Link } from "expo-router";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
@@ -32,13 +33,21 @@ export default function Index() {
         {moviesLoading ? (
           <ActivityIndicator size="large" color="#0000ff" className="mt-10 self-center" />
         ) : moviesError ? (
-          <Text>Error: {moviesError}</Text>
+          <View className="flex-1 justify-center items-center mt-10">
+            <Text className="text-white text-center text-lg mb-4">Unable to load movies</Text>
+            <Text className="text-light-300 text-center text-sm px-4">
+              Please check your internet connection and API configuration
+            </Text>
+            <Text className="text-red-400 text-center text-xs mt-2 px-4">
+              Error: {moviesError}
+            </Text>
+          </View>
         ) : (
           <View className="flex-1 mt-5">
-          <SearchBar 
-            onPress={() => router.push("/search")}
-            placeholder="Search for a movie"
-          />
+                      <SearchBar 
+              onPress={() => router.push("/(tabs)/search?autoFocus=true")}
+              placeholder="Search for a movie"
+            />
 
           <>
             <Text className="text-lg text-white font-bold mt-5 mb-3">Popular Movies</Text>
