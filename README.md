@@ -1,50 +1,279 @@
-# Welcome to your Expo app 👋
+# 🎬 MovieApp - Movie Discovery & Watchlist
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A beautiful, modern movie discovery app built with React Native and Expo. Browse popular movies, search for your favorites, and build your personal watchlist with a sleek, dark-themed interface.
 
-## Get started
+![App Preview](assets/images/app-preview.png)
 
-1. Install dependencies
+## ✨ Features
 
+### 🏠 **Home Screen**
+- Browse popular movies with stunning poster displays
+- Quick search access with auto-focus navigation
+- Beautiful background imagery and smooth animations
+- Grid layout with movie ratings and release years
+
+### 🔍 **Search Functionality**
+- Real-time search with 500ms debounce for optimal performance
+- Search history and popular search suggestions
+- Auto-focus when navigating from home screen
+- Comprehensive search results with movie details
+
+### 📱 **Movie Details**
+- Comprehensive movie information including:
+  - High-resolution backdrop and poster images
+  - Movie ratings, runtime, and release dates
+  - Director, cast, and crew information
+  - Budget and production details
+  - Full plot overview
+- Horizontal scrolling cast section with photos
+- Graceful handling of missing images and data
+- Professional fallback placeholders
+
+### 💾 **Watchlist Management**
+- Save movies to personal watchlist
+- Remove movies with confirmation dialogs
+- Persistent storage using AsyncStorage
+- Green indicators on saved movies across all screens
+- Single-column layout for easy browsing
+- Pull-to-refresh functionality
+
+### 👤 **Profile & Settings**
+- User profile with watchlist statistics
+- Average rating calculations
+- Clear watchlist functionality
+- App information and feedback options
+- Direct navigation to saved movies
+
+### 🎨 **Design & UX**
+- Dark theme with purple accent colors (`#AB8BFF`)
+- Consistent background imagery across all screens
+- Professional loading states and error handling
+- Smooth navigation with expo-router
+- Responsive design for different screen sizes
+- Tab-based navigation with custom styling
+
+## 🛠 Tech Stack
+
+### **Frontend Framework**
+- **React Native** - Cross-platform mobile development
+- **Expo SDK 53** - Development platform and tools
+- **TypeScript** - Type-safe JavaScript
+
+### **Navigation**
+- **Expo Router** - File-based routing system
+- **React Navigation** - Tab and stack navigation
+
+### **Styling**
+- **NativeWind** - Tailwind CSS for React Native
+- **Custom Color Scheme** - Dark theme with purple accents
+
+### **State Management**
+- **React Hooks** - useState, useEffect, useCallback
+- **Custom Hooks** - useFetch, useSavedMovies
+
+### **Data & Storage**
+- **AsyncStorage** - Persistent local storage
+- **TMDB API** - The Movie Database for movie data
+
+### **Development Tools**
+- **Expo CLI** - Development and build tools
+- **TypeScript** - Static type checking
+- **ESLint** - Code linting and formatting
+
+## 🚀 Getting Started
+
+### **Prerequisites**
+- Node.js (v16 or higher)
+- npm or yarn
+- Expo CLI
+- iOS Simulator or Android Emulator (optional)
+- Expo Go app on your mobile device
+
+### **Installation**
+
+1. **Clone the repository**
    ```bash
-   npm install
+   git clone https://github.com/yourusername/movieapp.git
+   cd movieapp
    ```
 
-2. Start the app
-
+2. **Install dependencies**
    ```bash
-    npx expo start
+   npm install --legacy-peer-deps
    ```
 
-In the output, you'll find options to open the app in a
+3. **Set up environment variables**
+   Create a `.env` file in the root directory:
+   ```env
+   EXPO_PUBLIC_MOVIE_API_KEY=your_tmdb_api_key_here
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+4. **Get TMDB API Key**
+   - Visit [The Movie Database](https://www.themoviedb.org/)
+   - Create a free account
+   - Go to Settings > API
+   - Copy your API key
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+5. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-## Get a fresh project
+6. **Run on device/simulator**
+   - Scan QR code with Expo Go app (mobile)
+   - Press `i` for iOS simulator
+   - Press `a` for Android emulator
 
-When you're ready, run:
+## 📁 Project Structure
 
-```bash
-npm run reset-project
+```
+movieapp/
+├── app/                    # App screens and navigation
+│   ├── (tabs)/            # Tab-based screens
+│   │   ├── index.tsx      # Home screen
+│   │   ├── search.tsx     # Search screen
+│   │   ├── saved.tsx      # Saved movies screen
+│   │   └── profile.tsx    # Profile screen
+│   ├── movies/            # Movie detail screens
+│   │   └── [id].tsx       # Dynamic movie detail page
+│   └── _layout.tsx        # Root layout
+├── components/            # Reusable components
+│   ├── MovieCard.tsx      # Movie display card
+│   ├── SavedMovieCard.tsx # Saved movie card
+│   └── SearchBar.tsx      # Search input component
+├── services/              # API and data services
+│   ├── api.ts             # TMDB API functions
+│   ├── useFetch.ts        # Custom fetch hook
+│   ├── savedMovies.ts     # AsyncStorage operations
+│   └── useSavedMovies.ts  # Saved movies hook
+├── constants/             # App constants
+│   ├── icons.ts           # Icon imports
+│   ├── images.ts          # Image imports
+│   └── Colors.ts          # Color definitions
+├── assets/                # Static assets
+│   ├── icons/             # App icons
+│   └── images/            # Background images
+└── types/                 # TypeScript type definitions
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🎨 Color Scheme
 
-## Learn more
+```typescript
+const Colors = {
+  primary: '#030014',      // Deep dark background
+  accent: '#AB8BFF',       // Purple accent
+  'dark-200': '#1a1a1a',   // Dark gray
+  'light-200': '#e5e5e5',  // Light gray
+  'light-300': '#d1d5db',  // Medium light gray
+}
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## 📱 API Integration
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### **TMDB API Endpoints Used**
+- **Popular Movies**: `/movie/popular`
+- **Search Movies**: `/search/movie`
+- **Movie Details**: `/movie/{id}`
+- **Movie Credits**: `/movie/{id}/credits`
 
-## Join the community
+### **Image URLs**
+- **Posters**: `https://image.tmdb.org/t/p/w500{poster_path}`
+- **Backdrops**: `https://image.tmdb.org/t/p/w780{backdrop_path}`
+- **Profiles**: `https://image.tmdb.org/t/p/w185{profile_path}`
 
-Join our community of developers creating universal apps.
+## 🔧 Configuration
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### **App Configuration (app.json)**
+```json
+{
+  "expo": {
+    "name": "MovieApp",
+    "slug": "movieapp",
+    "version": "1.0.0",
+    "platforms": ["ios", "android"],
+    "newArchEnabled": false,
+    "androidNavigationBar": {
+      "backgroundColor": "transparent"
+    }
+  }
+}
+```
+
+### **NativeWind Configuration (tailwind.config.js)**
+```javascript
+module.exports = {
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#030014',
+        accent: '#AB8BFF',
+        // ... other colors
+      }
+    }
+  }
+}
+```
+
+## 🚀 Building for Production
+
+### **iOS Build**
+```bash
+expo build:ios
+```
+
+### **Android Build**
+```bash
+expo build:android
+```
+
+### **EAS Build (Recommended)**
+```bash
+npm install -g @expo/eas-cli
+eas build --platform all
+```
+
+## 🧪 Testing
+
+### **Run Tests**
+```bash
+npm test
+```
+
+### **Type Checking**
+```bash
+npx tsc --noEmit
+```
+
+## 📝 Known Issues & Solutions
+
+### **TurboModule Error**
+If you encounter TurboModule errors:
+- Ensure `"newArchEnabled": false` in app.json
+- Use `--legacy-peer-deps` flag when installing packages
+
+### **Image Loading Issues**
+- Check internet connection
+- Verify TMDB API key is correct
+- Fallback placeholders are implemented for missing images
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **The Movie Database (TMDB)** - For providing the movie data API
+- **Expo Team** - For the amazing development platform
+- **React Native Community** - For the robust mobile framework
+- **NativeWind** - For bringing Tailwind CSS to React Native
+
+
