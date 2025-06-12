@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, Image, Keyboard } from 'react-native'
+import { View, Text, ImageBackground, Image, Keyboard, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Tabs } from 'expo-router'
 import { icons } from '@/constants/icons'
@@ -53,12 +53,13 @@ const _layout = () => {
             height: '100%',
             justifyContent: 'center',
             alignItems: 'center',
+            borderRadius: 50,
         },
         tabBarStyle: isKeyboardVisible ? { display: 'none' } : {
             backgroundColor: '#0f0d23',
             borderRadius: 50,
             marginHorizontal: 20,
-            marginBottom: 36,
+            marginBottom: 50,
             height: 52,
             position: 'absolute',
             overflow: 'hidden',
@@ -71,12 +72,10 @@ const _layout = () => {
                 title: "Home",
                 headerShown: false,
                 tabBarIcon: ({ focused }) => (
-                    <>
-                        <TabIcon 
-                            focused={focused}
-                            icon={icons.home}
-                            title="Home"/>
-                    </>
+                    <TabIcon 
+                        focused={focused}
+                        icon={icons.home}
+                        title="Home"/>
                 ),
             }}
         />
@@ -86,12 +85,10 @@ const _layout = () => {
                 title: "Search",
                 headerShown: false,
                 tabBarIcon: ({ focused }) => (
-                    <>
-                        <TabIcon 
-                            focused={focused}
-                            icon={icons.search}
-                            title="Search"/>
-                    </>
+                    <TabIcon 
+                        focused={focused}
+                        icon={icons.search}
+                        title="Search"/>
                 ),
             }}
         />
@@ -101,12 +98,10 @@ const _layout = () => {
                 title: "Saved",
                 headerShown: false,
                 tabBarIcon: ({ focused }) => (
-                    <>
-                        <TabIcon 
-                            focused={focused}
-                            icon={icons.save}
-                            title="Saved"/>
-                    </>
+                    <TabIcon 
+                        focused={focused}
+                        icon={icons.save}
+                        title="Saved"/>
                 ),
             }}
         />
@@ -116,12 +111,10 @@ const _layout = () => {
                 title: "Profile",
                 headerShown: false,
                 tabBarIcon: ({ focused }) => (
-                    <>
-                        <TabIcon 
-                            focused={focused}
-                            icon={icons.person}
-                            title="Profile"/>
-                    </>
+                    <TabIcon 
+                        focused={focused}
+                        icon={icons.person}
+                        title="Profile"/>
                 ),
             }}
         />

@@ -2,6 +2,7 @@ import { Link } from "expo-router";
 import { Text, Image, TouchableOpacity, View } from "react-native";
 
 import { icons } from "@/constants/icons";
+import { useSavedMovies } from "@/services/useSavedMovies";
 
 const MovieCard = ({
   id,
@@ -10,15 +11,19 @@ const MovieCard = ({
   vote_average,
   release_date,
 }: Movie) => {
+  const { isMovieSaved } = useSavedMovies()
+  const isSaved = isMovieSaved(id)
+
   return (
-    //@ts-ignore
-    <Link href={`/movie/${id}`} asChild>
-      <TouchableOpacity className="w-[30%]">
+    <View className="relative w-[30%]">
+      {/* @ts-ignore */}
+      <Link href={`/movies/${id}`} asChild>
+        <TouchableOpacity className="w-full">
         <Image
           source={{
             uri: poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
-              : "https://placehold.co/600x400/1a1a1a/FFFFFF.png",
+              : "https://via.placeholder.com/300x450/404040/404040",
           }}
           className="w-full h-52 rounded-lg"
           resizeMode="cover"
@@ -45,6 +50,14 @@ const MovieCard = ({
         </View>
       </TouchableOpacity>
     </Link>
+    
+    {/* Saved indicator */}
+    {isSaved && (
+      <View className="absolute top-2 left-2 bg-green-600 rounded-full p-1">
+        <Image source={icons.star} className="w-3 h-3" tintColor="white" />
+      </View>
+    )}
+  </View>
   );
 };
 

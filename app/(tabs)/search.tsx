@@ -211,7 +211,8 @@ const Search = () => {
 
   return (
     <View className="flex-1 bg-primary">
-      <Image source={images.bg} className="absolute w-full h-full" />
+
+      <Image source={images.bg} className="absolute w-full z-0" />
       
       <View className="flex-1 px-5">
         <View className="mt-16 mb-6">
