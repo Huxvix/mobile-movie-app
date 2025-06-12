@@ -271,6 +271,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
+- **JavaScript Mastery Youtube Channel** - For providing the starting knowledge and visual assets
 - **The Movie Database (TMDB)** - For providing the movie data API
 - **Expo Team** - For the amazing development platform
 - **React Native Community** - For the robust mobile framework
