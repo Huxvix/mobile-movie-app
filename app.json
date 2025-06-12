@@ -16,7 +16,10 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.mobileapp"
+      "package": "com.anonymous.mobileapp",
+      "navigationBar": {
+        "backgroundColor": "#00000000"
+      }
     },
     "web": {
       "bundler": "metro",

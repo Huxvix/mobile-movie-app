@@ -1,5 +1,5 @@
-import { View, Text, ImageBackground, Image } from 'react-native'
-import React from 'react'
+import { View, Text, ImageBackground, Image, Keyboard } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import { Tabs } from 'expo-router'
 import { icons } from '@/constants/icons'
 import { images } from '@/constants/images'
@@ -29,6 +29,22 @@ const TabIcon = ({ focused, title, icon }: any) => {
 }
 
 const _layout = () => {
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false)
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardVisible(true)
+    })
+    const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardVisible(false)
+    })
+
+    return () => {
+      keyboardDidHideListener?.remove()
+      keyboardDidShowListener?.remove()
+    }
+  }, [])
+
   return (
     <Tabs screenOptions={{
         tabBarShowLabel: false,
@@ -38,7 +54,7 @@ const _layout = () => {
             justifyContent: 'center',
             alignItems: 'center',
         },
-        tabBarStyle: {
+        tabBarStyle: isKeyboardVisible ? { display: 'none' } : {
             backgroundColor: '#0f0d23',
             borderRadius: 50,
             marginHorizontal: 20,
