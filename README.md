@@ -93,7 +93,7 @@ A beautiful, modern movie discovery app built with React Native and Expo. Browse
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/movieapp.git
+   git clone https://github.com/Huxvix/mobile-movie-app.git
    cd movieapp
    ```
 
